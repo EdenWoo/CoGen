@@ -6,42 +6,42 @@ var module_1 = require();
 }
 Action;
 from;
-'./add-{{class_model.name.get_camel()}}.action';
+'./add-{{class_model.name.get_kebab()}}.action';
 var module_2 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./delete-{{class_model.name.get_camel()}}.action';
+'./delete-{{class_model.name.get_kebab()}}.action';
 var module_3 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./fetch-{{class_model.name.get_camel()}}.action';
+'./fetch-{{class_model.name.get_kebab()}}.action';
 var module_4 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./set-{{class_model.name.get_camel()}}.action';
+'./set-{{class_model.name.get_kebab()}}.action';
 var module_5 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./update-{{class_model.name.get_camel()}}.action';
+'./update-{{class_model.name.get_kebab()}}.action';
 var module_6 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./store-{{class_model.name.get_camel()}}.action';
+'./store-{{class_model.name.get_kebab()}}.action';
 type;
 {
     {

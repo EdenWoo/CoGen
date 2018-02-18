@@ -14,26 +14,32 @@ require("rxjs/add/operator/withLatestFrom");
 var http_1 = require("@angular/common/http");
 var store_1 = require("@ngrx/store");
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 ActionConstants;
 from;
-'./actions/{{class_model.name.get_camel()}}-action.constant';
+'./actions/action.constants';
 var module_1 = require();
 {
     class_model.name.get_capitalized_camel();
 }
 Action;
 from;
-'./actions/fetch-{{class_model.name.get_camel()}}.action';
+'./actions/fetch-{{class_model.name.get_kebab()}}.action';
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 Service;
 from;
-'../{{class_model.name.get_camel()}}.service';
+'../{{class_model.name.get_kebab()}}.service';
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 FeatureStateInterface;
 from;

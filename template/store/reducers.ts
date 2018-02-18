@@ -1,7 +1,7 @@
 import {Ingredient} from '../../shared/ingredient.model';
-import {{{class_model.name.get_capitalized_camel()}}Actions} from 'app/dbc-pages/{{class_model.name.get_camel()}}/store/actions/{{class_model.name.get_camel()}}.actions';
-import {{{class_model.name.get_capitalized_camel()}}ActionConstants} from './actions/{{class_model.name.get_camel()}}-action.constant';
-import {{{class_model.name.get_capitalized_camel()}}InitialStateConstant} from './{{class_model.name.get_camel()}}-initial-state.constant';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}Actions} from './actions/actions';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}ActionConstants} from './actions/action.constants';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}InitialStateConstant} from './{{class_model.name.get_camel()}}-initial-state.constant';
 
 
 export function {{class_model.name.get_camel()}}sReducer(state = {{class_model.name.get_capitalized_camel()}}InitialStateConstant, action: {{class_model.name.get_capitalized_camel()}}Actions) {

@@ -49,27 +49,122 @@ class MainApp(QMainWindow):
 
     def export_ts_files(self, folder_path):
         ts_parent_folder = str(folder_path) + '/' \
-            + self.file.entity_declaration.name.get_capitalized_camel() + '/' \
-            + self.file.entity_declaration.name.get_kebab() + 's'
+                           + self.file.entity_declaration.name.get_capitalized_camel() + '/' \
+                           + self.file.entity_declaration.name.get_kebab()
         list_folder = ts_parent_folder + '/' \
-            + self.file.entity_declaration.name.get_kebab() + '-list'
+                      + self.file.entity_declaration.name.get_kebab() + '-list'
         form_folder = ts_parent_folder + '/' \
-            + self.file.entity_declaration.name.get_kebab() + '-form'
+                      + self.file.entity_declaration.name.get_kebab() + '-form'
+        store_folder = ts_parent_folder + '/' + 'store'
+        store_actions_folder = store_folder + '/' + 'actions'
+        store_interfaces_folder = store_folder + '/' + 'interfaces'
 
         if not os.path.exists(ts_parent_folder):
             os.makedirs(ts_parent_folder)
+        if not os.path.exists(store_actions_folder):
+            os.makedirs(store_actions_folder)
+        if not os.path.exists(store_interfaces_folder):
+            os.makedirs(store_interfaces_folder)
+
+        # =========================================================
+        # ====================Store BEGIN============================
+        # effects.ts
+        with open(store_folder + '/'
+                  + 'effects.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/effects.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # initial-state.constant.ts
+        with open(store_folder + '/'
+                  + 'initial-state.constant.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/initial-state.constant.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # reducers.ts
+        with open(store_folder + '/'
+                  + 'reducers.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/reducers.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # --------- actions folder ---------
+        # action.constants.ts
+        with open(store_actions_folder + '/action.constants.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/action.constant.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # action.ts
+        with open(store_actions_folder + '/actions.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/actions.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # add.action.ts
+        with open(store_actions_folder + '/add-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/add.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # delete.action.ts
+        with open(store_actions_folder + '/delete-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/delete.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # fetch.action.ts
+        with open(store_actions_folder + '/fetch-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/fetch.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # set.action.ts
+        with open(store_actions_folder + '/set-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/set.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # store.action.ts
+        with open(store_actions_folder + '/store-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/store.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # update.action.ts
+        with open(store_actions_folder + '/update-' + self.file.entity_declaration.name.get_kebab() + '.action.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/actions/update.action.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # --------- interfaces folder ---------
+        # feature-state.interface.ts
+        with open(store_interfaces_folder + '/feature-state.interface.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/interfaces/feature-state.interface.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # state.interface.ts
+        with open(store_interfaces_folder + '/state.interface.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('store/interfaces/state.interface.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # ====================Store END============================
+        # =========================================================
 
         with open(ts_parent_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
                   + '.service.ts', 'w+') as service_file:
-            service_output = self.jinja_env.get_template('typescripts/class-service.ts')\
+            service_output = self.jinja_env.get_template('typescripts/class-service.ts') \
                 .render({'class_model': self.file.entity_declaration})
             service_file.write(service_output)
 
         with open(ts_parent_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
                   + '.model.ts', 'w+') as model_file:
-            model_output = self.jinja_env.get_template('typescripts/class-model.ts')\
+            model_output = self.jinja_env.get_template('typescripts/class-model.ts') \
                 .render({'class_model': self.file.entity_declaration})
             model_file.write(model_output)
 
@@ -85,7 +180,7 @@ class MainApp(QMainWindow):
         with open(list_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
                   + '-list.component.html', 'w+') as list_html_file:
-            list_html_output = self.jinja_env.get_template('typescripts/list-class-component.html')\
+            list_html_output = self.jinja_env.get_template('typescripts/list-class-component.html') \
                 .render({'class_model': self.file.entity_declaration})
             list_html_file.write(list_html_output)
 
@@ -101,20 +196,20 @@ class MainApp(QMainWindow):
         with open(form_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
                   + '-form.component.html', 'w+') as form_html_file:
-            form_html_output = self.jinja_env.get_template('typescripts/form-class-component.html')\
+            form_html_output = self.jinja_env.get_template('typescripts/form-class-component.html') \
                 .render({'class_model': self.file.entity_declaration})
             form_html_file.write(form_html_output)
 
         with open(form_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
                   + '-form.component.ts', 'w+') as form_ts_file:
-            form_ts_output = self.jinja_env.get_template('typescripts/form-class-component.ts')\
+            form_ts_output = self.jinja_env.get_template('typescripts/form-class-component.ts') \
                 .render({'class_model': self.file.entity_declaration})
             form_ts_file.write(form_ts_output)
 
     def export_kt_files(self, folder_path):
         ts_parent_folder = str(folder_path) + '/' \
-            + self.file.entity_declaration.name.get_capitalized_camel() + '/kotlin'
+                           + self.file.entity_declaration.name.get_capitalized_camel() + '/kotlin'
         controller_folder = ts_parent_folder + '/controller'
         if not os.path.exists(controller_folder):
             os.makedirs(controller_folder)

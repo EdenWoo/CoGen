@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 Model;
 from;
-'../../{{class_model.name.get_camel()}}.model';
+'../../{{class_model.name.get_kebab()}}.model';
 var app_state_interface_1 = require("../../../../ngrx/app-store/app-state.interface");
 interface;
 {

@@ -4,11 +4,10 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/withLatestFrom';
 import {HttpClient} from '@angular/common/http';
 import {Store} from '@ngrx/store';
-import {{{class_model.name.get_capitalized_camel()}}ActionConstants} from './actions/{{class_model.name.get_camel()}}-action.constant';
-import {Fetch{{class_model.name.get_capitalized_camel()}}Action} from './actions/fetch-{{class_model.name.get_camel()}}.action';
-import {{{class_model.name.get_capitalized_camel()}}Service} from '../{{class_model.name.get_camel()}}.service';
-import {{{class_model.name.get_capitalized_camel()}}FeatureStateInterface} from './interfaces/feature-state.interface';
-
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}ActionConstants} from './actions/action.constants';
+import {Fetch{{class_model.name.get_capitalized_camel()}}Action} from './actions/fetch-{{class_model.name.get_kebab()}}.action';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}Service} from '../{{class_model.name.get_kebab()}}.service';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}FeatureStateInterface} from './interfaces/feature-state.interface';
 
 @Injectable()
 export class {{class_model.name.get_capitalized_camel()}}Effects {

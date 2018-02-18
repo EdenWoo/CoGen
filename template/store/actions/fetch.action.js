@@ -2,11 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var store_1 = require("@ngrx/store");
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 ActionConstants;
 from;
-'./{{class_model.name.get_camel()}}-action.constant';
+'./{{class_model.name.get_kebab()}}-action.constant';
 var Fetch = /** @class */ (function () {
     function Fetch() {
     }

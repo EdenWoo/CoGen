@@ -9,19 +9,25 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 Actions;
 from;
-'app/dbc-pages/{{class_model.name.get_camel()}}/store/actions/{{class_model.name.get_camel()}}.actions';
+'./actions/actions';
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 ActionConstants;
 from;
-'./actions/{{class_model.name.get_camel()}}-action.constant';
+'./actions/action.constants';
 {
-    class_model.name.get_capitalized_camel();
+    {
+        class_model.name.get_capitalized_camel();
+    }
 }
 InitialStateConstant;
 from;
