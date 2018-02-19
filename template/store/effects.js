@@ -89,7 +89,7 @@ switchMap(function (action, _a, _b, Action) {
         // type: {{class_model.name.get_capitalized_camel()}}ActionConstants.SET_{{class_model.name.get_capitalized_snake()}}S,
         type: {}
     });
-}, { class_model: .name.get_capitalized_camel() }, ActionConstants.SET_, {}, { class_model: .name.get_capitalized_snake() }, S, payload, {}, { class_model: .name.get_camel() }, s);
+}, { class_model: .name.get_capitalized_camel() }, ActionConstants.SET_, {}, { class_model: .name.get_capitalized_snake() }, S, payload, {}, { class_model: .name.get_camel() }, s.results);
 ;
 //
 // @Effect({dispatch: false})

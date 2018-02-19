@@ -8,7 +8,7 @@ var store_1 = require("@ngrx/store");
 }
 ActionConstants;
 from;
-'./{{class_model.name.get_kebab()}}-action.constant';
+'./action.constants';
 var Fetch = /** @class */ (function () {
     function Fetch() {
     }

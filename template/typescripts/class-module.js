@@ -43,14 +43,15 @@ FormComponent;
 }
 from;
 './{{class_model.name.get_kebab()}}-form/{{class_model.name.get_kebab()}}-form.component';
+var pipes_module_1 = require("../../theme/pipes/pipes.module");
 exports.routes = [
-    { path: '', redirectTo: 'list', pathMatch: 'full' },
-    { path: 'list', component: {} }, { class_model: .name.get_capitalized_camel() }
+    { path: '', redirectTo: '{{class_model.name.get_kebab()}}-list', pathMatch: 'full' },
+    { path: '{{class_model.name.get_kebab()}}-list', component: {} }, { class_model: .name.get_capitalized_camel() }
 ];
 ListComponent, pathMatch;
 'full';
 {
-    path: 'add', component;
+    path: '{{class_model.name.get_kebab()}}-add', component;
     {
         {
             class_model.name.get_capitalized_camel();
@@ -60,7 +61,7 @@ ListComponent, pathMatch;
     'full';
 }
 {
-    path: 'edit/:id', component;
+    path: '{{class_model.name.get_kebab()}}-edit/:id', component;
     {
         {
             class_model.name.get_capitalized_camel();
@@ -89,7 +90,8 @@ var default_1 = /** @class */ (function () {
             shared_module_1.SharedModule,
             ngx_pagination_1.NgxPaginationModule,
             ngx_loading_1.LoadingModule,
-            angular_confirmation_popover_1.ConfirmationPopoverModule
+            angular_confirmation_popover_1.ConfirmationPopoverModule,
+            pipes_module_1.PipesModule
         ])
     ], default_1);
     return default_1;

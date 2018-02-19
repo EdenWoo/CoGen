@@ -31,7 +31,7 @@ from;
 }
 InitialStateConstant;
 from;
-'./{{class_model.name.get_camel()}}-initial-state.constant';
+'./initial-state.constant';
 function () { {
     class_model.name.get_camel();
 } }

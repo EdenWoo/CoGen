@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {{'{'}}{{class_model.name.get_capitalized_camel()}}ActionConstants} from './{{class_model.name.get_kebab()}}-action.constant';
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}ActionConstants} from './action.constants';
 
 export class Fetch{{class_model.name.get_capitalized_camel()}}Action implements Action {
     // readonly type = {{class_model.name.get_capitalized_camel()}}ActionConstants.FETCH_ADMINUSERS;

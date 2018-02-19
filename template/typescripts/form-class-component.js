@@ -165,6 +165,7 @@ goBack();
 }
 onSubmit({ value: value, valid: valid }, { value: {} }, { class_model: .name.get_capitalized_camel() }, Model, valid, boolean);
 {
+    this.loading = true;
     if (!this.isEdit) {
         this.;
         {
@@ -175,9 +176,11 @@ onSubmit({ value: value, valid: valid }, { value: {} }, { class_model: .name.get
         Service.add(value).subscribe(function (resp) {
             console.log(resp);
             _this.goBack();
+            _this.loading = false;
         }, function (err) {
             console.log(err);
             _this.myNotifyService.notifyFail(err.error.error);
+            _this.loading = false;
         });
     }
     else {
@@ -192,10 +195,12 @@ onSubmit({ value: value, valid: valid }, { value: {} }, { class_model: .name.get
     pk, value;
     subscribe(function (resp) {
         console.log(resp);
+        _this.loading = false;
         _this.myNotifyService.notifySuccess('The {{class_model.name.get_sentence()}} is successfully updated.');
         _this.goBack();
     }, function (err) {
         console.log(err);
+        _this.loading = false;
         _this.myNotifyService.notifyFail(err.error.error);
     });
 }

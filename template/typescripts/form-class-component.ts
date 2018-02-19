@@ -90,22 +90,26 @@ this.location.back();
 }
 
 onSubmit({value, valid}: { value: {{class_model.name.get_capitalized_camel()}}Model, valid: boolean }) {
-
+this.loading = true;
 if (!this.isEdit) {
 this.{{class_model.name.get_camel()}}Service.add(value).subscribe((resp: any) => {
 console.log(resp);
 this.goBack();
+this.loading = false;
 }, err => {
 console.log(err);
 this.myNotifyService.notifyFail(err.error.error);
+this.loading = false;
 })
 } else {
 this.{{class_model.name.get_camel()}}Service.update(this.{{class_model.name.get_camel()}}.pk, value).subscribe((resp: any) => {
 console.log(resp);
+this.loading = false;
 this.myNotifyService.notifySuccess('The {{class_model.name.get_sentence()}} is successfully updated.');
 this.goBack();
 }, err => {
 console.log(err);
+this.loading = false;
 this.myNotifyService.notifyFail(err.error.error);
 })
 }

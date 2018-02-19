@@ -12,13 +12,14 @@ import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 
 import {{ '{' }}{{class_model.name.get_capitalized_camel()}}ListComponent{{ '}' }} from './{{class_model.name.get_kebab()}}-list/{{class_model.name.get_kebab()}}-list.component';
 import {{ '{' }}{{class_model.name.get_capitalized_camel()}}FormComponent{{ '}' }} from './{{class_model.name.get_kebab()}}-form/{{class_model.name.get_kebab()}}-form.component';
+import {PipesModule} from '../../theme/pipes/pipes.module';
 
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'list', pathMatch: 'full'},
-    {path: 'list', component: {{class_model.name.get_capitalized_camel()}}ListComponent, pathMatch: 'full'},
-    {path: 'add', component: {{class_model.name.get_capitalized_camel()}}FormComponent, pathMatch: 'full'},
-    {path: 'edit/:id', component: {{class_model.name.get_capitalized_camel()}}FormComponent, pathMatch: 'full'},
+    {path: '', redirectTo: '{{class_model.name.get_kebab()}}-list', pathMatch: 'full'},
+    {path: '{{class_model.name.get_kebab()}}-list', component: {{class_model.name.get_capitalized_camel()}}ListComponent, pathMatch: 'full'},
+    {path: '{{class_model.name.get_kebab()}}-add', component: {{class_model.name.get_capitalized_camel()}}FormComponent, pathMatch: 'full'},
+    {path: '{{class_model.name.get_kebab()}}-edit/:id', component: {{class_model.name.get_capitalized_camel()}}FormComponent, pathMatch: 'full'},
 ];
 
 
@@ -38,7 +39,8 @@ export const routes: Routes = [
         SharedModule,
         NgxPaginationModule,
         LoadingModule,
-        ConfirmationPopoverModule
+        ConfirmationPopoverModule,
+        PipesModule
     ],
 })
 export class {{class_model.name.get_capitalized_camel()}}Module {

@@ -1,8 +1,7 @@
 import {Ingredient} from '../../shared/ingredient.model';
 import {{'{'}}{{class_model.name.get_capitalized_camel()}}Actions} from './actions/actions';
 import {{'{'}}{{class_model.name.get_capitalized_camel()}}ActionConstants} from './actions/action.constants';
-import {{'{'}}{{class_model.name.get_capitalized_camel()}}InitialStateConstant} from './{{class_model.name.get_camel()}}-initial-state.constant';
-
+import {{'{'}}{{class_model.name.get_capitalized_camel()}}InitialStateConstant} from './initial-state.constant';
 
 export function {{class_model.name.get_camel()}}sReducer(state = {{class_model.name.get_capitalized_camel()}}InitialStateConstant, action: {{class_model.name.get_capitalized_camel()}}Actions) {
     switch (action.type) {
