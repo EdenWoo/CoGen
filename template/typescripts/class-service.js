@@ -9,6 +9,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var base_service_1 = require("../../services/base.service");
+var store_1 = require("@ngrx/store");
+{
+    {
+        class_model.name.get_capitalized_camel();
+    }
+}
+FeatureStateInterface;
+{
+    {
+        '}';
+    }
+}
+from;
+'./store/interfaces/feature-state.interface';
+Fetch;
+{
+    {
+        class_model.name.get_capitalized_camel();
+    }
+}
+Action;
+{
+    {
+        '}';
+    }
+}
+from;
+'./store/actions/fetch-{{class_model.name.get_kebab()}}.action';
 var default_1 = /** @class */ (function () {
     function default_1() {
     }
@@ -25,10 +53,23 @@ base_service_1.BaseService;
 implements;
 core_1.OnInit;
 {
-    constructor(public, http, http_1.HttpClient);
-    {
-        _this = _super.call(this, '{{class_model.name.get_kebab()}}', http) || this;
-    }
-    ngOnInit();
-    void {};
+    constructor(public, http, http_1.HttpClient, public, store, store_1.Store < {}, { class_model: .name.get_capitalized_camel() });
 }
+FeatureStateInterface > ;
+{
+    _this = _super.call(this, '{{class_model.name.get_kebab()}}', http) || this;
+}
+ngOnInit();
+void {};
+fetchAll();
+{
+    this.store.dispatch(new Fetch, {}, { class_model: .name.get_capitalized_camel() });
+}
+Action({});
+;
+getAllFromStore();
+{
+    return this.store.select(function (o) { return o.; }, {}, { class_model: .name.get_camel() });
+}
+List;
+;

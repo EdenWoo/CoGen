@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -20,6 +20,8 @@ public myForm: FormGroup;
 public id: number;
 public isEdit = false;
 public subscription: Subscription;
+ @Input('isQuickAdd') isQuickAdd: boolean;
+ @Output() submitEvent = new EventEmitter();
 public {{class_model.name.get_camel()}}: {{class_model.name.get_capitalized_camel()}}Model = new {{class_model.name.get_capitalized_camel()}}Model();
 
 constructor(public formBuiler: FormBuilder,
@@ -94,23 +96,30 @@ this.loading = true;
 if (!this.isEdit) {
 this.{{class_model.name.get_camel()}}Service.add(value).subscribe((resp: any) => {
 console.log(resp);
-this.goBack();
+this.{{class_model.name.get_camel()}}Service.fetchAll();
+        if (this.isQuickAdd) {
+            this.myForm.reset();
+            this.submitEvent.emit('true');
+        } else {
+            this.goBack();
+        }
 this.loading = false;
 }, err => {
 console.log(err);
-this.myNotifyService.notifyFail(err.error.error);
+this.myNotifyService.notifyFail('Error happens, please check and try again');
 this.loading = false;
 })
 } else {
 this.{{class_model.name.get_camel()}}Service.update(this.{{class_model.name.get_camel()}}.pk, value).subscribe((resp: any) => {
 console.log(resp);
 this.loading = false;
+this.{{class_model.name.get_camel()}}Service.fetchAll();
 this.myNotifyService.notifySuccess('The {{class_model.name.get_sentence()}} is successfully updated.');
 this.goBack();
 }, err => {
 console.log(err);
 this.loading = false;
-this.myNotifyService.notifyFail(err.error.error);
+this.myNotifyService.notifyFail('Error happens, please check and try again');
 })
 }
 }

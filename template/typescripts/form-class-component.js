@@ -66,6 +66,8 @@ core_1.OnInit;
     id: number;
     isEdit = false;
     subscription: Subscription_1.Subscription;
+    isQuickAdd: boolean;
+    submitEvent = new core_1.EventEmitter();
     public;
     {
         {
@@ -175,11 +177,24 @@ onSubmit({ value: value, valid: valid }, { value: {} }, { class_model: .name.get
         }
         Service.add(value).subscribe(function (resp) {
             console.log(resp);
-            _this.goBack();
+            _this.;
+            {
+                {
+                    class_model.name.get_camel();
+                }
+            }
+            Service.fetchAll();
+            if (_this.isQuickAdd) {
+                _this.myForm.reset();
+                _this.submitEvent.emit('true');
+            }
+            else {
+                _this.goBack();
+            }
             _this.loading = false;
         }, function (err) {
             console.log(err);
-            _this.myNotifyService.notifyFail(err.error.error);
+            _this.myNotifyService.notifyFail('Error happens, please check and try again');
             _this.loading = false;
         });
     }
@@ -196,11 +211,18 @@ onSubmit({ value: value, valid: valid }, { value: {} }, { class_model: .name.get
     subscribe(function (resp) {
         console.log(resp);
         _this.loading = false;
+        _this.;
+        {
+            {
+                class_model.name.get_camel();
+            }
+        }
+        Service.fetchAll();
         _this.myNotifyService.notifySuccess('The {{class_model.name.get_sentence()}} is successfully updated.');
         _this.goBack();
     }, function (err) {
         console.log(err);
         _this.loading = false;
-        _this.myNotifyService.notifyFail(err.error.error);
+        _this.myNotifyService.notifyFail('Error happens, please check and try again');
     });
 }
