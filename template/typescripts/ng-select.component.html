@@ -1,0 +1,12 @@
+<ng-select [items]="datasForSelect"
+           [multiple]="multiple"
+           bindLabel="name"
+           (change)="datasChanged($event)"
+           placeholder="Type to search"
+           [typeahead]="typeahead"
+           [(ngModel)]="selectedDatas">
+    <ng-template ng-option-tmp let-item="item">
+        <!--<img [src]="item.avatar_url" width="20px" height="20px"> {{item.login}}-->
+        {{item.name}}
+    </ng-template>
+</ng-select>

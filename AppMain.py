@@ -55,16 +55,32 @@ class MainApp(QMainWindow):
                       + self.file.entity_declaration.name.get_kebab() + '-list'
         form_folder = ts_parent_folder + '/' \
                       + self.file.entity_declaration.name.get_kebab() + '-form'
+        multi_select_folder = ts_parent_folder + '/' \
+                      + self.file.entity_declaration.name.get_kebab() + '-multi-select'
+        ajax_multi_select_folder = ts_parent_folder + '/' \
+                              + self.file.entity_declaration.name.get_kebab() + '-ajax-multi-select'
+        ng_multi_select_folder = ts_parent_folder + '/' \
+                                   + self.file.entity_declaration.name.get_kebab() + '-ng-select'
         store_folder = ts_parent_folder + '/' + 'store'
         store_actions_folder = store_folder + '/' + 'actions'
         store_interfaces_folder = store_folder + '/' + 'interfaces'
 
         if not os.path.exists(ts_parent_folder):
             os.makedirs(ts_parent_folder)
+        if not os.path.exists(store_folder):
+            os.makedirs(store_folder)
         if not os.path.exists(store_actions_folder):
             os.makedirs(store_actions_folder)
         if not os.path.exists(store_interfaces_folder):
             os.makedirs(store_interfaces_folder)
+        if not os.path.exists(multi_select_folder):
+            os.makedirs(multi_select_folder)
+
+        if not os.path.exists(ajax_multi_select_folder):
+            os.makedirs(ajax_multi_select_folder)
+
+        if not os.path.exists(ng_multi_select_folder):
+            os.makedirs(ng_multi_select_folder)
 
         # =========================================================
         # ====================Store BEGIN============================
@@ -152,6 +168,84 @@ class MainApp(QMainWindow):
             service_file.write(service_output)
 
         # ====================Store END============================
+        # =========================================================
+
+
+        # =========================================================
+        # ====================multi select END=====================
+        # state.interface.ts
+        with open(multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-multi-select.component.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/multi-select.component.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # state.interface.ts
+        with open(multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-multi-select.component.html',
+                  'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/multi-select.component.html') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # multi-select.snippet.txt
+        with open(multi_select_folder + '/multi-select.snippet.txt',
+                  'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/multi-select.snippet.txt') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+        # ====================multi select END=====================
+        # =========================================================
+
+        # =========================================================
+        # ====================ajax multi select END=====================
+        # state.interface.ts
+        with open(
+                ajax_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ajax-multi-select.component.ts',
+                'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/ajax-multi-select.component.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        with open(
+                ajax_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ajax-multi-select.component.html',
+                'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/ajax-multi-select.component.html') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # # ajax-multi-select.snippet.txt
+        # with open(multi_select_folder + '/ajax-multi-select.snippet.txt',
+        #           'w+') as service_file:
+        #     service_output = self.jinja_env.get_template('typescripts/ajax-multi-select.snippet.txt') \
+        #         .render({'class_model': self.file.entity_declaration})
+        #     service_file.write(service_output)
+        # ====================ajax multi select END=====================
+        # =========================================================
+
+
+        # ==============================================================
+        # ====================ng multi select BEGIN=====================
+        # state.interface.ts
+        with open(
+                ng_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ng-select.component.ts',
+                'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/ng-select.component.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        with open(
+                ng_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ng-select.component.html',
+                'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/ng-select.component.html') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        # # ajax-multi-select.snippet.txt
+        # with open(multi_select_folder + '/ajax-multi-select.snippet.txt',
+        #           'w+') as service_file:
+        #     service_output = self.jinja_env.get_template('typescripts/ajax-multi-select.snippet.txt') \
+        #         .render({'class_model': self.file.entity_declaration})
+        #     service_file.write(service_output)
+        # ====================ng multi select END=====================
         # =========================================================
 
         with open(ts_parent_folder + '/'

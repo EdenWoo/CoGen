@@ -1,0 +1,30 @@
+ <!--######################### HTML ###############################-->
+ <input type="text"
+       style="display: none;"
+       formControlName="{{class_model.name.get_camel()}}"
+       [(ngModel)]="model.{{class_model.name.get_camel()}}"
+       name="{{class_model.name.get_camel()}}"
+       placeholder="" />
+
+<section class="col col-6">
+    <label class="select">
+        {{class_model.name.get_capitalized_camel()}}<span style="color: red">*</span>
+        <label style="font-size:10px !important;"
+               type="button"
+               class="btn clear1 pull-right btn-primary btn-xs">Add new {{class_model.name.get_capitalized_camel()}}
+            </label>
+        <{{class_model.name.get_kebab()}}-multi-select
+                (datasSelected)="{{class_model.name.get_camel()}}Selected($event)"
+                [multiple]="false"
+        ></{{class_model.name.get_kebab()}}-multi-select>
+        <validation-error
+                [control]="myForm.get('{{class_model.name.get_camel()}}')"></validation-error>
+    </label>
+</section>
+
+
+ <!--######################### component ###############################-->
+
+{{class_model.name.get_camel()}}Selected($event) {
+        this.model.{{class_model.name.get_camel()}} = $event;
+    }
