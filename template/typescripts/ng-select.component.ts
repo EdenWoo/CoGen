@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class {{class_model.name.get_capitalized_camel()}}NgSelectComponent implements OnInit {
     @Input('multiple')
-    public multiple: boolean = false;
+    public multiple = false;
 
     @Input('outputArray')
     public outputArray: boolean;
@@ -51,7 +51,7 @@ export class {{class_model.name.get_capitalized_camel()}}NgSelectComponent imple
 
     constructor(public http: HttpClient,
                 public cd: ChangeDetectorRef,
-                public {{class_model.name.get_camel()}}Service: CompanyService) {
+                public {{class_model.name.get_camel()}}Service: {{class_model.name.get_capitalized_camel()}}Service) {
         this.initSelect();
     }
 
@@ -90,7 +90,6 @@ export class {{class_model.name.get_capitalized_camel()}}NgSelectComponent imple
     }
 
     processDataForSelect() {
-        // 默认选择第一个
         // if (!this.multiple && this.datasForSelect && this.datasForSelect.length > 0) {
         //     this.selectedDatas = this.datasForSelect[0];
         // }

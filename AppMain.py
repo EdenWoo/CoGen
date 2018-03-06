@@ -226,8 +226,7 @@ class MainApp(QMainWindow):
         # ====================ng multi select BEGIN=====================
         # state.interface.ts
         with open(
-                ng_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ng-select.component.ts',
-                'w+') as service_file:
+                ng_multi_select_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-ng-select.component.ts', 'w+') as service_file:
             service_output = self.jinja_env.get_template('typescripts/ng-select.component.ts') \
                 .render({'class_model': self.file.entity_declaration})
             service_file.write(service_output)
