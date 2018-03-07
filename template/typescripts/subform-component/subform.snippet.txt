@@ -1,0 +1,81 @@
+
+// ================================put in subform's parent form========================================
+// ==============================={{class_model.name.get_capitalized_camel()}} SubForm============================
+load{{class_model.name.get_capitalized_camel()}}Form() {
+    const {{class_model.name.get_camel()}}Ctrls = (<FormArray>this.myForm.controls['{{class_model.name.get_camel()}}s']).controls;
+
+    if ({{class_model.name.get_camel()}}Ctrls && this.brandCompany.brand.{{class_model.name.get_camel()}}s) {
+        while ({{class_model.name.get_camel()}}Ctrls.length < this.brandCompany.brand.{{class_model.name.get_camel()}}s.length) {
+            this.add{{class_model.name.get_capitalized_camel()}}FormControl();
+        }
+    }
+    // this.ref.markForCheck();
+    // this.ref.detectChanges();
+}
+
+add{{class_model.name.get_capitalized_camel()}}FormControl() {
+    const control = <FormArray>this.myForm.controls['{{class_model.name.get_camel()}}s'];
+    const addrCtrl = this.init{{class_model.name.get_capitalized_camel()}}FormControl();
+    control.push(addrCtrl);
+}
+
+remove{{class_model.name.get_capitalized_camel()}}FormControl(i: number) {
+    const control = <FormArray> this.myForm.controls['{{class_model.name.get_camel()}}s'];
+    control.removeAt(i);
+}
+
+init{{class_model.name.get_capitalized_camel()}}FormControl() {
+   return this.myForm = this.formBuiler.group({
+        {% for member in class_model.member_list %}
+        {{member.name.get_camel()}}: ['', [Validators.required]],
+        {% endfor %}
+    });
+}
+
+get{{class_model.name.get_capitalized_camel()}}Set(i: number): {{class_model.name.get_capitalized_camel()}}Model {
+    if (this.isEdit && this.brandCompany.brand && this.brandCompany.brand.{{class_model.name.get_camel()}}s) {
+        return this.brandCompany.brand.{{class_model.name.get_camel()}}s[i];
+    }
+}
+
+get{{class_model.name.get_capitalized_camel()}}FormData() {
+    return <FormArray>this.myForm.get('{{class_model.name.get_camel()}}s');
+}
+
+// ==============================={{class_model.name.get_capitalized_camel()}} SubForm============================
+// ========================================================================
+
+//====================put in parent html ===================
+
+ <!--<section></section>-->
+
+<div formArrayName="{{class_model.name.get_camel()}}s" id="{{class_model.name.get_camel()}}s">
+    <div *ngFor="let {{class_model.name.get_camel()}} of get{{class_model.name.get_capitalized_camel()}}FormData().controls; let i=index" [ngClass]="get{{class_model.name.get_capitalized_camel()}}FormData().controls.length > 0 ? 'my-subform-border' : ''">
+        <div [formGroupName]="i">
+            <brand-tag-subform-component
+                    [group]="get{{class_model.name.get_capitalized_camel()}}FormData().controls[i]"
+                    [{{class_model.name.get_camel()}}]="get{{class_model.name.get_capitalized_camel()}}Set(i)"></brand-tag-subform-component>
+
+            <div class="row">
+                <section class="col col-offset-8 col-4 align-center" style="margin-top: 20px;">
+                    <a class="btn btn-danger"
+                       (click)="remove{{class_model.name.get_capitalized_camel()}}FormControl(i)">
+                        <i class="fa fa-remove"></i>
+                        Remove
+                    </a>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <section class="col col-6 align-center">
+            <a class="btn btn-success btn-sm"
+               (click)="add{{class_model.name.get_capitalized_camel()}}FormControl()">
+                <i class="fa fa-plus"></i>
+                Add {{class_model.name.get_capitalized_camel()}}
+            </a>
+        </section>
+    </div>
+</div>
+// ========================================================================

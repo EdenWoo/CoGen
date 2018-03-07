@@ -1,0 +1,78 @@
+<div [formGroup]="childForm">
+    <div class="row">
+        <section class="col col-6" style="display: none;">
+            <label class="input">
+                Pk
+                <span style="color: red">*</span>
+                <input type="text"
+                       formControlName="pk"
+                       [(ngModel)]="brandTag.pk"
+                       name="pk"
+                       placeholder="">
+                <validation-error
+                        [control]="childForm.get('pk')"></validation-error>
+            </label>
+        </section>
+    </div>
+
+    <div class="row">
+        {% for member in class_model.member_list %}
+
+        <section class="col col-6">
+            <label class="input">
+                {{member.name.get_capitalized_sentence()}}
+                <span style="color: red">*</span>
+                <input type="text"
+                       formControlName="{{member.name.get_camel()}}"
+                       [(ngModel)]="{{class_model.name.get_camel()}}.{{member.name.get_camel()}}"
+                       name="{{member.name}}"
+                       placeholder="">
+                <validation-error
+                        [control]="myForm.get('{{member.name.get_camel()}}')"></validation-error>
+            </label>
+        </section>
+        {% endfor %}
+    </div>
+
+    <!--<div class="row">-->
+        <!--<section class="col col-6" style=" margin-top: 20px;">-->
+            <!--<label class="toggle">-->
+                <!--Is The Brand Tag Verified ?-->
+                <!--<input type="checkbox"-->
+                       <!--formControlName="isVerified"-->
+                       <!--[(ngModel)]="brandTag.isVerified"-->
+                       <!--name="isVerified"-->
+                       <!--checked="checked">-->
+                <!--<i data-swchon-text="YES" data-swchoff-text="NO"></i></label>-->
+        <!--</section>-->
+    <!--</div>-->
+
+    <!--<div>-->
+        <!--<input type="text"-->
+               <!--formControlName="brandImg"-->
+               <!--[(ngModel)]="brandTag.brandImg"-->
+               <!--name="personFile"-->
+               <!--placeholder=""-->
+               <!--style="display: none;">-->
+        <!--<validation-error-->
+                <!--[control]="childForm.get('brandImg')"></validation-error>-->
+
+
+        <!--&lt;!&ndash;<label> Brand Imgages</label>&ndash;&gt;-->
+        <!--<div class="row dropzone-area">-->
+            <!--<div class="" role="content">-->
+                <!--&lt;!&ndash; widget content &ndash;&gt;-->
+                <!--<div class="widget-body">-->
+
+                    <!--<my-drop-zone-component-->
+                            <!--[maxFiles]="10"-->
+                            <!--[subject]="imageSubject"-->
+                            <!--(fileObjectsChanged)="filesChanged($event)"></my-drop-zone-component>-->
+
+                <!--</div>-->
+                <!--&lt;!&ndash; end widget content &ndash;&gt;-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

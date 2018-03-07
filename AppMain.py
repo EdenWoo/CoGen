@@ -61,6 +61,7 @@ class MainApp(QMainWindow):
                               + self.file.entity_declaration.name.get_kebab() + '-ajax-multi-select'
         ng_multi_select_folder = ts_parent_folder + '/' \
                                    + self.file.entity_declaration.name.get_kebab() + '-ng-select'
+        sub_form_folder = ts_parent_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-sub-form'
         store_folder = ts_parent_folder + '/' + 'store'
         store_actions_folder = store_folder + '/' + 'actions'
         store_interfaces_folder = store_folder + '/' + 'interfaces'
@@ -82,6 +83,8 @@ class MainApp(QMainWindow):
         if not os.path.exists(ng_multi_select_folder):
             os.makedirs(ng_multi_select_folder)
 
+        if not os.path.exists(sub_form_folder):
+            os.makedirs(sub_form_folder)
         # =========================================================
         # ====================Store BEGIN============================
         # effects.ts
@@ -246,6 +249,31 @@ class MainApp(QMainWindow):
         #     service_file.write(service_output)
         # ====================ng multi select END=====================
         # =========================================================
+
+        # =========================================================
+        # ====================subform BEGIN=====================
+        with open(
+                sub_form_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-subform.component.ts', 'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/subform-component/subform.component.ts') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        with open(
+                sub_form_folder + '/' + self.file.entity_declaration.name.get_kebab() + '-subform.component.html',\
+                'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/subform-component/subform.component.html') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+
+        with open(sub_form_folder + '/subform.snippet.txt',\
+                  'w+') as service_file:
+            service_output = self.jinja_env.get_template('typescripts/subform-component/subform.snippet.txt') \
+                .render({'class_model': self.file.entity_declaration})
+            service_file.write(service_output)
+        # ====================subform END=====================
+        # =========================================================
+
+
 
         with open(ts_parent_folder + '/'
                   + self.file.entity_declaration.name.get_kebab()
