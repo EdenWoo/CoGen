@@ -32,9 +32,9 @@ init{{class_model.name.get_capitalized_camel()}}FormControl() {
     });
 }
 
-get{{class_model.name.get_capitalized_camel()}}Set(i: number): {{class_model.name.get_capitalized_camel()}}Model {
-    if (this.isEdit && this.brandCompany.brand && this.brandCompany.brand.{{class_model.name.get_camel()}}s) {
-        return this.brandCompany.brand.{{class_model.name.get_camel()}}s[i];
+get{{class_model.name.get_capitalized_camel()}}(i: number): {{class_model.name.get_capitalized_camel()}}Model {
+    if (this.isEdit && this.model && this.model.{{class_model.name.get_camel()}}s) {
+        return this.model.{{class_model.name.get_camel()}}s[i];
     }
 }
 
@@ -47,14 +47,14 @@ get{{class_model.name.get_capitalized_camel()}}FormData() {
 
 //====================put in parent html ===================
 
- <!--<section></section>-->
-
+ <!--<div class="row"></div>-->
+<div class="row">
 <div formArrayName="{{class_model.name.get_camel()}}s" id="{{class_model.name.get_camel()}}s">
     <div *ngFor="let {{class_model.name.get_camel()}} of get{{class_model.name.get_capitalized_camel()}}FormData().controls; let i=index" [ngClass]="get{{class_model.name.get_capitalized_camel()}}FormData().controls.length > 0 ? 'my-subform-border' : ''">
         <div [formGroupName]="i">
-            <brand-tag-subform-component
+            <{{class_model.name.get_kebab()}}-subform-component
                     [group]="get{{class_model.name.get_capitalized_camel()}}FormData().controls[i]"
-                    [{{class_model.name.get_camel()}}]="get{{class_model.name.get_capitalized_camel()}}Set(i)"></brand-tag-subform-component>
+                    [{{class_model.name.get_camel()}}]="get{{class_model.name.get_capitalized_camel()}}(i)"></{{class_model.name.get_kebab()}}-subform-component>
 
             <div class="row">
                 <section class="col col-offset-8 col-4 align-center" style="margin-top: 20px;">
@@ -77,5 +77,6 @@ get{{class_model.name.get_capitalized_camel()}}FormData() {
             </a>
         </section>
     </div>
+</div>
 </div>
 // ========================================================================
